@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <h2>Detalles de la Factura</h2>
+    <div class="card" id="facturaContent">
+      <div class="card-header">
+        Factura {{ factura.FacturaId }}
+      </div>
+      <div class="card-body">
+        <p><strong>Cliente:</strong> {{ factura.ClienteNombre }}</p>
+        <h4>Detalles</h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>IVA</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detalle of factura.Detalles">
+              <td>{{ detalle.Descripcion }}</td>
+              <td>{{ detalle.Cantidad }}</td>
+              <td>{{ detalle.PrecioUnitario | currency }}</td>
+              <td>{{ detalle.IVA }}%</td>
+              <td>{{ detalle.Subtotal | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Base Imponible IVA 0%:</strong> {{ factura.BaseImponibleIVA0 | currency }}</p>
+        <p><strong>Base Imponible IVA 12%:</strong> {{ factura.BaseImponibleIVA12 | currency }}</p>
+        <p><strong>IVA 12%:</strong> {{ factura.IVA | currency }}</p>
+        <p><strong>Total a Pagar:</strong> {{ factura.TotalPagar| currency }}</p>
+        <button (click)="downloadFactura()" class="btn btn-success">Descargar Factura</button>
+      </div>
+    </div>
+  </div>

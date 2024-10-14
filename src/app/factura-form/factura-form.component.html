@@ -1,0 +1,73 @@
+<form (ngSubmit)="guardarFactura()" class="container mt-4">
+  <!-- Datos del Cliente -->
+  <div class="form-group">
+    <label for="clienteNombre">Nombre del Cliente:</label>
+    <input type="text" id="clienteNombre" [(ngModel)]="factura.ClienteNombre" name="clienteNombre" class="form-control" required>
+  </div>
+
+  <!-- Lista de Artículos -->
+  <div *ngFor="let detalle of factura.Detalles; let i = index" class="card mb-3">
+    <div class="card-header">
+      Artículo {{ i + 1 }}
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="descripcion-{{i}}">Descripción:</label>
+        <input type="text" id="descripcion-{{i}}" [(ngModel)]="detalle.Descripcion" name="descripcion-{{i}}" class="form-control" placeholder="Descripción" required>
+      </div>
+      <div class="form-group">
+        <label for="cantidad-{{i}}">Cantidad:</label>
+        <input type="number" id="cantidad-{{i}}" [(ngModel)]="detalle.Cantidad" name="cantidad-{{i}}" class="form-control" placeholder="Cantidad" required>
+      </div>
+      <div class="form-group">
+        <label for="precio-{{i}}">Precio Unitario:</label>
+        <input type="number" id="precio-{{i}}" [(ngModel)]="detalle.PrecioUnitario" name="precio-{{i}}" class="form-control" placeholder="Precio Unitario" required>
+      </div>
+      <div class="form-group">
+        <label for="iva-{{i}}">IVA:</label>
+        <select id="iva-{{i}}" [(ngModel)]="detalle.IVA" name="iva-{{i}}" class="form-control">
+          <option value="0">IVA 0%</option>
+          <option value="12">IVA 12%</option>
+        </select>
+      </div>
+      <button type="button" (click)="eliminarDetalle(i)" class="btn btn-danger">Eliminar</button>
+    </div>
+  </div>
+
+  <!-- Botón para agregar más artículos -->
+  <div class="form-group">
+    <button type="button" (click)="agregarDetalle()" class="btn btn-primary">Agregar Artículo</button>
+  </div>
+
+  <!-- Resumen de la Factura -->
+  <div class="card mt-4">
+    <div class="card-header">
+      Resumen de la Factura
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label>Base Imponible IVA 0%:</label>
+        <input type="text" [value]="factura.BaseImponibleIVA0 | currency" class="form-control" readonly>
+      </div>
+      <div class="form-group">
+        <label>Base Imponible IVA 12%:</label>
+        <input type="text" [value]="factura.BaseImponibleIVA12 | currency" class="form-control" readonly>
+      </div>
+      <div class="form-group">
+        <label>IVA 12%:</label>
+        <input type="text" [value]="factura.IVA | currency" class="form-control" readonly>
+      </div>
+      <div class="form-group">
+        <label>Total a Pagar:</label>
+        <input type="text" [value]="factura.TotalPagar | currency" class="form-control" readonly>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón para Guardar -->
+  <div class="form-group mt-4">
+    <button type="submit" class="btn btn-success">Guardar Factura</button>
+  </div>
+</form>
+
+<a href="facturas">Ir a otra página</a>

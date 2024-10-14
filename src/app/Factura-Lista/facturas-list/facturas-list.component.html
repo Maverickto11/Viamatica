@@ -1,0 +1,21 @@
+<div class="container mt-4">
+    <h2>Lista de Facturas</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas">
+          <td>{{ factura.ClienteNombre }}</td>
+         <!-- Asegúrate de que 'descripcion' esté en tu modelo -->
+          <td>
+            <button (click)="verFactura(factura.FacturaId)" class="btn btn-primary">Ver</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
