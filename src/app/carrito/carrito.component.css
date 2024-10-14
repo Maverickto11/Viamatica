@@ -1,0 +1,75 @@
+
+.container {
+  background-color: #f4f7fa;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #2d3748;
+}
+
+.text-center {
+  color: #718096;
+}
+
+.cart-item {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.cart-item:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.text-gray-900 {
+  color: #2d3748;
+}
+
+.text-gray-600 {
+  color: #718096;
+}
+
+.text-green-600 {
+  color: #38a169;
+}
+
+.bg-red-600 {
+  background-color: #e53e3e;
+}
+
+.hover\:bg-red-800:hover {
+  background-color: #9b2c2c;
+}
+
+.bg-blue-600 {
+  background-color: #3182ce;
+}
+
+.hover\:bg-blue-800:hover {
+  background-color: #2b6cb0;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.rounded-lg {
+  border-radius: 10px;
+}
+
+.transition-colors {
+  transition: background-color 0.3s;
+}
+
+.transition-all {
+  transition: all 0.3s;
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
