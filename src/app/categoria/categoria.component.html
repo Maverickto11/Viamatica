@@ -1,1 +1,11 @@
-<p>categoria works!</p>
+<div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Categorías</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let categoria of categories" class="bg-white rounded-lg shadow-md p-4">
+        <!-- Agregando la imagen de la categoría -->
+        <img [src]="categoria.imagen" alt="{{ categoria.imagen }}" class="rounded-md h-40 w-full object-cover mb-2">
+        <h2 class="text-lg font-semibold">{{ categoria.Nombre}}</h2>
+        <button (click)="selectCategory(categoria.CategoriaId)" class="mt-2 bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition">Ver Más</button>
+    </div>
+    </div>
+  </div>
