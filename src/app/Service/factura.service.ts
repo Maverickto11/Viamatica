@@ -9,6 +9,7 @@ import { Factura } from '../environment/Factura';
 export class FacturaService {
 
   private apiUrl = 'https://localhost:7090/api/Factura'; // Reemplaza con la URL de tu API
+  private api = 'https://localhost:7090/api'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,10 @@ export class FacturaService {
 
   obtenerFacturaPorId(id: number): Observable<Factura> {
     return this.http.get<Factura>(`${this.apiUrl}/${id}`);
+  }
+
+  obternerCategoria(): Observable<any> {
+    return this.http.get(`${this.api}/categoria`);
   }
 
   
