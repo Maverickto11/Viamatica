@@ -1,4 +1,4 @@
-<nav class="bg-gray-800">
+<nav *ngIf="mostrarNavbar" class="bg-gray-800">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -31,7 +31,6 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="/categoria" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">inicio</a>
             <a href="/categoria" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Categorias</a>
-            <a href="/login" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Productos</a>
             <a href="/carrito" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Carrito</a>
           </div>
         </div>

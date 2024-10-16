@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Factura } from '../environment/Factura';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Category } from '../environment/Category';
 import { Product } from '../environment/Product';
+import { login } from '../environment/login';
+import { Usuario } from '../environment/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -15,35 +16,44 @@ export class FacturaService {
 
   constructor(private http: HttpClient) { }
 
-  login(nombreUsuario: string, clave: string): Observable<any> {
-    return this.http.post(`${this.api}/Usuarios/login`, { nombreUsuario, clave });
+ 
+
+
+  login(correo: string, contrasena: string): Observable<any> {
+    const loginRequest: login = {
+      correo: correo,
+      contrasena: contrasena,
+    };
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', // Asegúrate de que el tipo de contenido sea JSON
+    });
+
+    return this.http.post(`${this.api}/Login/login`, loginRequest, { headers });
   }
 
-  obtenerFacturas(): Observable<Factura[]> {
-    return this.http.get<Factura[]>(this.apiUrl);
-  }
+  register(usuario: Usuario): Observable<any> {
 
-  obtenerFacturaPorId(id: number): Observable<Factura> {
-    return this.http.get<Factura>(`${this.apiUrl}/${id}`);
+    return this.http.post(`${this.api}/Login/register`, usuario);
   }
 
   /*obternerCategoria(): Observable<any> {
     return this.http.get(`${this.api}/categoria`);
   }*/
 
-    getCategories(): Observable<Category[]> {
-      return this.http.get<Category[]>(`${this.api}/categoria`); // Ajusta la ruta según tu API
-    }
-  
-   getProductsByCategoryId(categoryId: number): Observable<Category> {
-      return this.http.get<Category>(`${this.api}/categoria/${categoryId}`); // Ajusta la ruta según tu API
-    }
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.api}/categoria`); // Ajusta la ruta según tu API
+  }
 
-    addProductToCart(product: any): Observable<any> {
-      return this.http.post(`${this.api}/Carrito/add`, product);
-    }
+  getProductsByCategoryId(categoryId: number): Observable<Category> {
+    return this.http.get<Category>(`${this.api}/categoria/${categoryId}`); // Ajusta la ruta según tu API
+  }
 
-    // Obtener los productos del carrito
+  addProductToCart(product: any): Observable<any> {
+    return this.http.post(`${this.api}/Carrito/add`, product);
+  }
+
+  // Obtener los productos del carrito
   getCartItems(): Observable<any[]> {
     return this.http.get<any[]>(`${this.api}/Carrito`);
   }
@@ -59,6 +69,6 @@ export class FacturaService {
     return this.http.get<any>(`${this.api}/Carrito/${cartId}`);
   }
 
-  
-  
+
+
 }
