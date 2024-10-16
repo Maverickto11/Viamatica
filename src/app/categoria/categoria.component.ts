@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Factura } from '../environment/Factura';
 import { FacturaService } from '../Service/factura.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';

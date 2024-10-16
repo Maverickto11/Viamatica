@@ -50,6 +50,7 @@ export class FacturaService {
   }
 
   addProductToCart(product: any): Observable<any> {
+    
     return this.http.post(`${this.api}/Carrito/add`, product);
   }
 
