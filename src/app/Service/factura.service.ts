@@ -42,6 +42,7 @@ export class FacturaService {
   }*/
 
   getCategories(): Observable<Category[]> {
+   
     return this.http.get<Category[]>(`${this.api}/categoria`); // Ajusta la ruta según tu API
   }
 
