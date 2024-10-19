@@ -51,6 +51,9 @@
           Registrarse
         </button>
       </div>
+      <p *ngIf="errorMessage" style="text-align: center;" class="text-red-600 font-medium mt-4">{{ errorMessage }}</p>
+
+
 
       <div class="mt-6 text-center">
         <a [routerLink]="['/login']" class="text-blue-500 hover:text-blue-700 text-sm">¿Ya tienes una cuenta? Inicia sesión aquí</a>

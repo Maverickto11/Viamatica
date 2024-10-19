@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
+  errorMessage: string = '';
 
   usuario = {
     nombre: '',
@@ -26,11 +27,14 @@ export class RegistroComponent {
     this.authService.register(this.usuario).subscribe(
         response => {
             console.log('Registro exitoso:', response);
+            this.errorMessage = "Registro exitoso";
         },
         error => {
             console.error('Error en el registro:', error);
+            this.errorMessage = "Ocurrió un error. Inténtalo nuevamente.";
         }
     );
+  }
 }
 
-}
+

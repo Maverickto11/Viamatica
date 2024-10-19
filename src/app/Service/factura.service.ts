@@ -11,8 +11,8 @@ import { Usuario } from '../environment/Usuario';
 })
 export class FacturaService {
 
-  private apiUrl = 'https://localhost:7090/api/Factura'; // Reemplaza con la URL de tu API
-  private api = 'https://localhost:7090/api'; // Reemplaza con la URL de tu API
+  private apiUrl = 'https://back-e-commerce.netlify.app/api/Factura'; // Reemplaza con la URL de tu API
+  private api = 'https://back-e-commerce.netlify.app/api'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) { }
 
