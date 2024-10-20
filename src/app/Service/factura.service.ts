@@ -11,8 +11,8 @@ import { Usuario } from '../environment/Usuario';
 })
 export class FacturaService {
 
-  private apiUrl = 'www.maverick.somee.com/api/Factura'; // Reemplaza con la URL de tu API
-  private api = 'www.maverick.somee.com/api'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://www.maverick.somee.com/api/Factura'; // Reemplaza con la URL de tu API
+  private api = 'http://www.maverick.somee.com/api'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) { }
 
