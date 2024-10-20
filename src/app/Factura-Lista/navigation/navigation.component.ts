@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -9,10 +9,10 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css'
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit{
   mostrarNavbar: boolean = true;
   constructor(private router: Router) {}
-
+  mostrarMenuMovil = false; 
   ngOnInit(): void {
     // Detectar cambios en la ruta
     this.router.events.subscribe(() => {
@@ -24,5 +24,8 @@ export class NavigationComponent {
         this.mostrarNavbar = true;
       }
     });
+  }
+  toggleMenuMovil() {
+    this.mostrarMenuMovil = !this.mostrarMenuMovil;
   }
 }
